@@ -337,6 +337,17 @@
 
         runAsync().start();
       })();
+
+window.addEventListener("DOMContentLoaded", () => {
+    const audio = document.getElementById("media");
+
+    // Only if autoplay fails, wait for click
+    audio.play().catch(() => {
+      document.body.addEventListener("click", () => {
+        audio.play();
+      }, { once: true });
+    });
+  });
     </script>
   </body>
 </html>
